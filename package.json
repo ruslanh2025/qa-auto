@@ -1,0 +1,17 @@
+{
+  "name": "automation-learning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Ruslan",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.15",
+    "is-even-check-new": "^1.0.1"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.8.0"
+  }
+}

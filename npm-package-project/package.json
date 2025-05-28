@@ -1,0 +1,18 @@
+{
+  "name": "npm-package-project-by-rh2025",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "even",
+    "utility"
+  ],
+  "author": "Ruslan Haribov",
+  "license": "MIT",
+  "description": "Простий пакет для перевірки парності числа",
+  "dependencies": {
+    "npm-package-project-by-rh2025": "^1.0.0"
+  }
+}
