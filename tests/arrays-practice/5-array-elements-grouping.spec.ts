@@ -6,3 +6,7 @@ myColor = ["Red", "Green", "White", "Black"];
 // "Red,Green,White,Black"  
 // "Red+Green+White+Black"    
 */
+
+function join(arr: any[], separator: any) {
+    return arr.join(separator)
+};
