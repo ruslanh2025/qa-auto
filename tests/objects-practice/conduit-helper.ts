@@ -1,20 +1,48 @@
-import { Page, expect } from '@playwright/test'
+import { Locator, Page, expect } from '@playwright/test'
 import { faker } from '@faker-js/faker';
 
 // creating function for the Registration page, to Sing up new user
-export function registrationPage(page: Page) {
+export class RegistrationPage {
+  page: Page;
+  userNameLocator: Locator;
+  emailLocator: Locator;
+  passwordLocator: Locator;
+  signUpButtonLocator: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
     this.userNameLocator = page.locator('[placeholder="Username"]');
     this.emailLocator = page.locator('[placeholder="Email"]');
     this.passwordLocator = page.locator('[placeholder="Password"]');
-    this.signUpButtonLocator = page.locator("//button[contains(text(), 'Sign up')]");
+    this.signUpButtonLocator = page.locator(
+      "//button[contains(text(), 'Sign up')]"
+    );
+  }
+
+  async fillRegistrationForm(userData: any) {
+    await this.userNameLocator.fill(userData.userName);
+    await this.emailLocator.fill(userData.email);
+    await this.passwordLocator.fill(userData.password);
+  }
+
+  async submitRegistration() {
+    await this.signUpButtonLocator.click();
+  }
 };
 
 // creating function to generate fake user data each time to create new unique user
-export function fakerUserDataForSignUp() {
-    this.timeStamp = Date.now();
-    this.userName = `user${this.timeStamp}`;
-    this.email = `user-${this.timeStamp}@test.com`;
-    this.password = `pass-${this.timeStamp}`;
+export class FakerUserDataForSignUp {
+    timeStamp: number;
+    userName: string;
+    email: string;
+    password: string;
+    
+    constructor() {
+        this.timeStamp = Date.now();
+        this.userName = `user${this.timeStamp}`;
+        this.email = `user-${this.timeStamp}@test.com`;
+        this.password = `pass-${this.timeStamp}`;
+    }
 };
 
 // locators for New Article Creation

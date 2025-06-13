@@ -1,13 +1,13 @@
 import { test, expect, Page } from '@playwright/test'
 import {
-  registrationPage,
-  fakerUserDataForSignUp,
+  RegistrationPage,
+  FakerUserDataForSignUp,
   newArticleCreation,
 } from "./conduit-helper";
 
 test('new article can be created', async ({ page }) => {
-    const registerPage = new registrationPage(page);
-    const fakeData = new fakerUserDataForSignUp()
+    const registerPage = new RegistrationPage(page);
+    const fakeData = new FakerUserDataForSignUp()
     await page.goto("https://demo.learnwebdriverio.com/register");
     // Signing up new user
     await registerPage.userNameLocator.fill(fakeData.userName);
