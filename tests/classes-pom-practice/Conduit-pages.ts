@@ -2,56 +2,36 @@
 
 import { Page, Locator } from "@playwright/test";
 
-export class YourFeed {
+export class HomePage {
   page: Page;
   yourFeedLocator: Locator;
-    
+  globalFeedLocator: Locator;
+  popularTagsLocator: Locator;
+  firstArticleLocator: Locator;
+
   constructor(page: Page) {
-    this.page= page
+    this.page = page;
     this.yourFeedLocator = page.locator('[href="/my-feed"]');
+    this.globalFeedLocator = page.getByRole("link", { name: "Global Feed" });
+    this.popularTagsLocator = page.getByRole("link", {
+      name: "qa",
+      exact: true,
+    });
+    this.firstArticleLocator = page
+      .locator('[data-qa-type="preview-title"]')
+      .first();
   }
-    YourFeedLinkClick(page: Page) {
-        this.yourFeedLocator.click()
-    }
-}
-
-export class GlobalFeed{
-    page: Page;
-    globalFeedLocator: Locator;
-
-    constructor(page: Page) {
-        this.page = page
-        this.globalFeedLocator = page.getByRole("link", { name: "Global Feed" });
-    }
-    GlobalFeedLinkClick(page: Page) {
-        this.globalFeedLocator.click()
-    }
-}
-
-export class PopularTags{
-    page: Page;
-    popularTagsLocator: Locator;
-
-    constructor(page: Page) {
-        this.page = page
-        this.popularTagsLocator = page.getByRole("link", { name: "qa", exact: true });
-    }
-    PopularTagsLinkClick(page: Page) {
-        this.popularTagsLocator.click()
-    }
-}
-
-export class FirstArticle{
-    page: Page;
-    firstArticleLocator: Locator;
-
-    constructor(page: Page) {
-        this.page = page
-        this.firstArticleLocator = page.locator('[data-qa-type="preview-title"]').first();
-    }
-
-    FirstArticleClick(page: Page) {
-        page.waitForSelector('[data-qa-type="preview-title"]');
-        this.firstArticleLocator.click()
-    }
+  async yourFeedLinkClick(page: Page) {
+    await this.yourFeedLocator.click();
+  }
+  async globalFeedLinkClick(page: Page) {
+    await this.globalFeedLocator.click();
+  }
+  async popularTagsLinkClick(page: Page) {
+    await this.popularTagsLocator.click();
+  }
+  async firstArticleClick(page: Page) {
+    await page.waitForSelector('[data-qa-type="preview-title"]');
+    await this.firstArticleLocator.click();
+  }
 }

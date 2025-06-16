@@ -15,18 +15,15 @@ test('test', async ({ page }) => {
 
   // Клікнути на Your Feed
   await page.locator('[href="/my-feed"]').click();
-  await page.waitForTimeout(2000);
-  expect(page).toHaveURL("https://demo.learnwebdriverio.com/my-feed");
+  await expect(page).toHaveURL("https://demo.learnwebdriverio.com/my-feed");
 
   // Клікнути на Global Feed
   await page.getByRole("link", { name: "Global Feed" }).click();
-  await page.waitForTimeout(2000);
-  expect(page).toHaveURL("https://demo.learnwebdriverio.com/");
+  await expect(page).toHaveURL("https://demo.learnwebdriverio.com/");
 
   // Клікнути на один з Popular Tags (e.g. 'qa')
   await page.getByRole("link", { name: "qa", exact: true }).click();
-  await page.waitForTimeout(2000);
-  expect(page).toHaveURL("https://demo.learnwebdriverio.com/tag/qa");
+  await expect(page).toHaveURL("https://demo.learnwebdriverio.com/tag/qa");
 
   // Вибрати перший Артікл зі списку (після фільтрації по тегу)
   // Чекаємо появи списку артіклів і клікаємо на перший
