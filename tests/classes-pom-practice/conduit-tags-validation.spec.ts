@@ -5,7 +5,7 @@ import {
   RegistrationPage,
   FakerUserDataForSignUp,
 } from "../objects-practice/conduit-helper";
-import { HomePage } from './conduit-pages';
+import { HomePage } from '../../pages/conduit/Conduit-pages'
 
 test('test', async ({ page }) => {
   const registerPage = new RegistrationPage(page);
