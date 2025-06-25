@@ -4,7 +4,7 @@ import { InventoryPage } from '../../pages/saucedemo/InventoryPage';
 import { CartPage } from '../../pages/saucedemo/CartPage';
 import { CheckoutPage } from '../../pages/saucedemo/CheckoutPage';
 
-test('test', async ({ page }) => {
+test('user can add something to the cart and submit checkout', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const inventoryPage = new InventoryPage(page);
     const cartPage = new CartPage(page);

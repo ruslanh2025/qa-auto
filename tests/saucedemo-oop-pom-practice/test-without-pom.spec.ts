@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-test('test', async ({ page }) => {
+test("user can add something to the cart and submit checkout", async ({
+  page,
+}) => {
   await page.goto("https://www.saucedemo.com/");
 
   // Залогінитись під існуючим юзером
