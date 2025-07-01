@@ -4,10 +4,10 @@ import { test } from '../../fixtures/saucedemo/baseFixture'
 test("User can add something to the cart and submit checkout", async ({
   page, loginPage, inventoryPage, cartPage, checkoutPage
 }) => {
-  await loginPage.goToSaucedemoPage(page);
+  await loginPage.goToSaucedemoPage();
 
   await test.step('Login as existing user', async () => {
-    await loginPage.loginUser(page);
+    await loginPage.loginUser({ username: "standard_user", password: 'secret_sauce'});
     await expect(page.locator('[data-test="title"]')).toBeVisible();
   });
 

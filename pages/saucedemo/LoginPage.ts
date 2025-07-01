@@ -14,13 +14,13 @@ export class LoginPage {
       this.loginButtonLocator = page.locator('[data-test="login-button"]');
   };
   
-    async goToSaucedemoPage(page: Page) {
+    async goToSaucedemoPage() {
     await this.page.goto("https://www.saucedemo.com/");
     }
     
-    async loginUser(page: Page) {
-        await this.userNameInputLocator.fill("standard_user");
-        await this.passwordInputLocator.fill("secret_sauce");
+    async loginUser(userData: { username: string; password: string}) {
+        await this.userNameInputLocator.fill(userData.username);
+        await this.passwordInputLocator.fill(userData.password);
         await this.loginButtonLocator.click();
     }
 }
